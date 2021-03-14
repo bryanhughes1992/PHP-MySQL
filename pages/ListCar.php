@@ -1,6 +1,6 @@
 <?php
-require_once 'models/DataBase.php';
-require_once 'models/Cars.php';
+require_once '../models/Cars.php';
+require_once '../models/DataBase.php';
 
 $dbConn = DataBase::getDB();
 $dbCars = new Cars();
@@ -31,7 +31,7 @@ $clientCars = $dbCars->getAllCars(DataBase::getDB());
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($cars as $car) { ?>
+          <?php foreach ($clientCars as $car) { ?>
             <tr>
               <th><?= $car->id; ?></th>
               <td><?= $car->make; ?></td>

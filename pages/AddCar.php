@@ -12,7 +12,8 @@ if(isset($_POST['addCar'])) {
   $clientCar = $dbCar->addCar($make, $model, $year, $db);
 
   if($clientCar) {
-    header('Location: ListCar.php');
+    header('Location: "./ListCar.php"');
+    exit();
   } else {
     echo "ERROR";
   }
@@ -23,7 +24,6 @@ if(isset($_POST['addCar'])) {
   <head>
       <title>Car Management System - ADD</title>
       <meta name="description" content="Car Management System">
-      <meta name="keywords" content="Student, PHP, SQL, Car">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="CSS/style.css" type="text/css">
   </head>
@@ -33,23 +33,23 @@ if(isset($_POST['addCar'])) {
           <fieldset>
 
             <div class="form-group">
-                <label for="make">Make :</label>
+                <label for="make">Make:</label>
                 <input type="text" class="form-control" name="make" id="make" value="" placeholder="Enter car make">
                 <span style="color: red"></span>
             </div>
 
             <div class="form-group">
-                <label for="model">Model :</label>
+                <label for="model">Model:</label>
                 <input type="text" class="form-control" id="model" name="model" value="" placeholder="Enter model">
                 <span style="color: red"></span>
             </div>
 
             <div class="form-group">
-                <label for="program">Year :</label>
+                <label for="program">Year:</label>
                 <input type="number" name="year" value="" class="form-control" id="year" placeholder="Enter year">
                 <span style="color: red"></span>
             </div>
-            <a href="./list-car.php" id="btn_back" class="btn btn-success float-left">Back</a>
+            <a href="./ListCar.php" id="btn_back" class="btn btn-success float-left">Back</a>
             <button type="submit" name="addCar" class="btn btn-primary float-right" id="btn-submit">Add Car</button>
           </fieldset>
         </form>

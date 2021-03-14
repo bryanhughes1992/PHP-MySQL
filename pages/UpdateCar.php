@@ -1,6 +1,6 @@
 <?php
-require_once 'models/Database.php';
-require_once 'models/Cars.php';
+include '../models/Cars.php';
+include '../models/DataBase.php';
 
 $make = $model = $year = "";
 
@@ -29,7 +29,7 @@ if (isset($_POST['updateBtn'])) {
   $count = $dbCar->updateCar($id, $make, $model, $year, $db);
 
   if ($count) {
-    header('Location:  ListCar.php');
+    header('Location:  "./ListCar.php"');
   } else {
     echo "ERROR";
   }
@@ -69,7 +69,7 @@ if (isset($_POST['updateBtn'])) {
           <span style="color: red"> </span>
         </div>
 
-        <a href="../ListCar.php" id="btn_back" class="btn btn-success float-left">Back</a>
+        <a href="./ListCar.php" id="btn_back" class="btn btn-success float-left">Back</a>
 
         <button type="submit" name="updateBtn" class="btn btn-primary float-right" id="btn-submit">
           Update Car

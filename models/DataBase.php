@@ -26,7 +26,7 @@
           //If there's an error thrown, Capture the msg and exit the attempt.
         } catch (PDOException $exception) {
           $outMsg = $exception->getMessage();
-          include '../pages/CustomError.php';
+          include './pages/CustomError.php';
           exit();
         }
       }

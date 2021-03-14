@@ -1,6 +1,6 @@
 <?php
-require_once 'models/Cars.php';
-require_once 'modelsDataBase.php';
+require_once '../models/Cars.php';
+require_once '../models/DataBase.php';
 
 if(isset($_POST['id'])) {
   $id = $_POST['id'];
@@ -9,7 +9,7 @@ if(isset($_POST['id'])) {
   $dbCar = new Cars();
   $clientCar = $dbCar->deleteCar($id, $db);
   if($clientCar) {
-    header("Location: list-car.php");
+    header('Location: "./ListCar.php"');
   } else {
     echo "DELETION ERROR";
   }
