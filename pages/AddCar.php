@@ -19,35 +19,49 @@ if(isset($_POST['addCar'])) {
   }
 }
 ?>
-
 <html lang="en">
   <head>
-      <title>Car Management System - ADD</title>
-      <meta name="description" content="Car Management System">
+      <title>Add a Car</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="CSS/style.css" type="text/css">
+      <link rel="stylesheet" href="../styles/style.css" type="text/css">
   </head>
   <body>
-    <div>
-        <form action="" method="post">
+    <div class="master-container">
+      <form action="" method="post">
+          <h2 class="title">Add a Car</h2>
           <fieldset>
-
             <div class="form-group">
                 <label for="make">Make:</label>
-                <input type="text" class="form-control" name="make" id="make" value="" placeholder="Enter car make">
-                <span style="color: red"></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="make"
+                  id="make"
+                  value=""
+                  placeholder="Make"
+                >
             </div>
-
             <div class="form-group">
                 <label for="model">Model:</label>
-                <input type="text" class="form-control" id="model" name="model" value="" placeholder="Enter model">
-                <span style="color: red"></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="model"
+                  name="model"
+                  value=""
+                  placeholder="Model"
+                >
             </div>
-
             <div class="form-group">
                 <label for="program">Year:</label>
-                <input type="number" name="year" value="" class="form-control" id="year" placeholder="Enter year">
-                <span style="color: red"></span>
+                <input
+                  type="number"
+                  name="year"
+                  value=""
+                  class="form-control"
+                  id="year"
+                  placeholder="Year"
+                >
             </div>
             <a href="../index.php" id="btn_back" class="btn btn-success float-left">Back</a>
             <button type="submit" name="addCar" class="btn btn-primary float-right" id="btn-submit">Add Car</button>
