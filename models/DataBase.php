@@ -20,13 +20,13 @@
       if(!isset(self::$dbConn)) {
         //Try connecting with these credentials
         try {
-          self::$dbConn = new PDO(self::$dsn, self::$user, self::$password);
-          self::$dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          self::$dbConn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+          self::$dbConn = new \PDO(self::$dsn, self::$user, self::$password);
+          self::$dbConn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+          self::$dbConn->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
           //If there's an error thrown, Capture the msg and exit the attempt.
         } catch (PDOException $exception) {
           $outMsg = $exception->getMessage();
-          include './pages/CustomError.php';
+          echo $outMsg;
           exit();
         }
       }

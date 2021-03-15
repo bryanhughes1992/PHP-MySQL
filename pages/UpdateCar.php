@@ -1,6 +1,6 @@
 <?php
-include '../models/Cars.php';
-include '../models/DataBase.php';
+require_once '../models/Cars.php';
+require_once '../models/DataBase.php';
 
 $make = $model = $year = "";
 
@@ -8,7 +8,7 @@ if (isset($_POST['updateCar'])) {
 
 
   $id = $_POST['id'];
-  $db = Database::getDb();
+  $db = DataBase::getDB();
 
   $dbCar = new Cars();
   $car = $dbCar->getCarById($id, $db);
@@ -24,12 +24,12 @@ if (isset($_POST['updateBtn'])) {
   $model = $_POST['model'];
   $year = $_POST['year'];
 
-  $db = Database::getDb();
+  $db = DataBase::getDB();
   $dbCar = new Cars();
   $count = $dbCar->updateCar($id, $make, $model, $year, $db);
 
   if ($count) {
-    header('Location:  "./ListCar.php"');
+    header('Location:  ../index.php');
   } else {
     echo "ERROR";
   }
@@ -53,23 +53,23 @@ if (isset($_POST['updateBtn'])) {
 
         <div class="form-group">
           <label for="make">Make:</label>
-          <input type="text" class="form-control" name="make" id="make" value="" placeholder="Enter car make">
+          <input type="text" class="form-control" name="make" id="make" value="<?=$make?>" placeholder="Enter car make">
           <span style="color: red"> </span>
         </div>
 
         <div class="form-group">
           <label for="model">Model:</label>
-          <input type="text" class="form-control" id="model" name="model" value="" placeholder="Enter Model">
+          <input type="text" class="form-control" id="model" name="model" value="<?=$model?>" placeholder="Enter Model">
           <span style="color: red"> </span>
         </div>
 
         <div class="form-group">
           <label for="year">Year:</label>
-          <input type="number" name="year" value="" class="form-control" id="year" placeholder="Enter year">
+          <input type="number" name="year" value="<?=$year?>" class="form-control" id="year" placeholder="Enter year">
           <span style="color: red"> </span>
         </div>
 
-        <a href="./ListCar.php" id="btn_back" class="btn btn-success float-left">Back</a>
+        <a href="../index.php" id="btn_back" class="btn btn-success float-left">Back</a>
 
         <button type="submit" name="updateBtn" class="btn btn-primary float-right" id="btn-submit">
           Update Car

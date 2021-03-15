@@ -12,7 +12,7 @@ if(isset($_POST['addCar'])) {
   $clientCar = $dbCar->addCar($make, $model, $year, $db);
 
   if($clientCar) {
-    header('Location: "./ListCar.php"');
+    header('Location: ../index.php');
     exit();
   } else {
     echo "ERROR";
@@ -49,7 +49,7 @@ if(isset($_POST['addCar'])) {
                 <input type="number" name="year" value="" class="form-control" id="year" placeholder="Enter year">
                 <span style="color: red"></span>
             </div>
-            <a href="./ListCar.php" id="btn_back" class="btn btn-success float-left">Back</a>
+            <a href="../index.php" id="btn_back" class="btn btn-success float-left">Back</a>
             <button type="submit" name="addCar" class="btn btn-primary float-right" id="btn-submit">Add Car</button>
           </fieldset>
         </form>

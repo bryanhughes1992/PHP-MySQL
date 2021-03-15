@@ -9,7 +9,7 @@ if(isset($_POST['id'])) {
   $dbCar = new Cars();
   $clientCar = $dbCar->deleteCar($id, $db);
   if($clientCar) {
-    header('Location: "./ListCar.php"');
+    header('Location: ../index.php');
   } else {
     echo "DELETION ERROR";
   }

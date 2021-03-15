@@ -1,12 +1,65 @@
 <?php
-
-require_once '../models/DataBase.php';
+require_once 'DataBase.php';
 
 /**
  * CARS MODEL
  */
 class Cars
 {
+  /**
+   * GET MAKE
+   */
+  public function getMake($db)
+  {
+    $query = "SELECT DISTINCT make FROM carList";
+    $pdoStm = $db->prepare($query);
+    $pdoStm->execute();
+
+    $result = $pdoStm->fetchAll(\PDO::FETCH_OBJ);
+    return $result;
+  }
+
+  /**
+   * GET CAR MAKE
+   */
+  public function getCarMake($db, $make)
+  {
+    $query = "SELECT * FROM carList WHERE make = :make";
+    $pdoStm = $db->prepare($query);
+    $pdoStm->bindValue(":make", $make, \PDO::PARAM_STR);
+    $pdoStm->execute();
+
+    $result = $pdoStm->fetchAll(\PDO::FETCH_OBJ);
+    return $result;
+  }
+
+  /**
+   * GET CAR BY ID
+   */
+  public function getCarById($id, $db)
+  {
+    $query = "SELECT * FROM carList WHERE id = :id";
+    $pdoStm = $db->prepare($query);
+    $pdoStm->bindParam(":id", $id);
+    $pdoStm->execute();
+
+    $result = $pdoStm->fetch(\PDO::FETCH_OBJ);
+    return $result;
+  }
+
+  /**
+   * GET ALL CARS
+   */
+  public function getAllCars($db)
+  {
+    $query = "SELECT * FROM carList";
+    $pdoStm = $db->prepare($query);
+    $pdoStm->execute();
+
+    $result = $pdoStm->fetchAll(\PDO::FETCH_OBJ);
+    return $result;
+  }
+
   /**
    * ADD/CREATE FUNCTIONALITY
    */
@@ -24,8 +77,8 @@ class Cars
     $pdoStm->bindParam(':model', $model);
     $pdoStm->bindParam(':year', $year);
 
-    $count = $pdoStm->execute();
-    return $count;
+    $result = $pdoStm->execute();
+    return $result;
   }
 
   /**
@@ -49,8 +102,8 @@ class Cars
     $pdoStm->bindParam(":year", $year);
     $pdoStm->bindParam(":id", $id);
 
-    $count = $pdoStm->execute();
-    return $count;
+    $result = $pdoStm->execute();
+    return $result;
   }
 
   /**
@@ -62,57 +115,9 @@ class Cars
     $pdoStm = $db->prepare($query);
     $pdoStm->bindParam(':id', $id);
 
-    $count = $pdoStm->execute();
-    return $count;
-  }
-
-  /**
-   * GET MAKE
-   */
-  public function getMake($db) {
-    $query = "SELECT DISTINCT make FROM carList";
-    $pdoStm = $db->prepare($query);
-    $pdoStm->execute();
-
-    $result = $pdoStm->fetchAll(PDO::FETCH_OBJ);
+    $result = $pdoStm->execute();
     return $result;
   }
 
-  /**
-   * GET CAR MAKE
-   */
-  public function getCarMake($db, $make) {
-    $query = "SELECT * FROM carList WHERE make = :make";
-    $pdoStm = $db->prepare($query);
-    $pdoStm->bindValue(":make", $make, PDO::PARAM_STR);
-    $pdoStm->execute();
 
-    $result = $pdoStm->fetchAll(PDO::FETCH_OBJ);
-    return $result;
-  }
-
-  /**
-   * GET CAR BY ID
-   */
-  public function getCarById($db, $id) {
-    $query = "SELECT * FROM carList WHERE id = :id";
-    $pdoStm = $db->prepare($query);
-    $pdoStm->bindParam(":id", $id);
-    $pdoStm->execute();
-
-    $result = $pdoStm->fetch(PDO::FETCH_OBJ);
-    return $result;
-  }
-
-  /**
-   * GET ALL CARS
-   */
-  public function getAllCars($db) {
-    $query = "SELECT * FROM carList";
-    $pdoStm = $db->prepare($query);
-    $pdoStm = $db->execute();
-
-    $result = $pdoStm->fetchAll(PDO::FETCH_OBJ);
-    return $result;
-  }
 }
